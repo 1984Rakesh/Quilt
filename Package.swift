@@ -5,21 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "Quilt",
-    platforms: [
-        .iOS(.v13)
-    ],
+    platforms: [.iOS(.v14)],
     products: [
-        .library(
-            name: "Quilt",
-            targets: ["Quilt"]),
+        .library(name: "Quilt", targets: ["Quilt"])
     ],
     dependencies: [],
     targets: [
-        .target(
-            name: "Quilt",
-            dependencies: []),
-        .testTarget(
-            name: "QuiltTests",
-            dependencies: ["Quilt"]),
+        .target(name: "Quilt", dependencies: [])
     ]
 )
