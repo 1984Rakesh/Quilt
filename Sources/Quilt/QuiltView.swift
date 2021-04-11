@@ -146,18 +146,17 @@ public struct QuiltView<Data:RandomAccessCollection,Item:Hashable,Content:View> 
     }
 }
 
-public struct Patch<T:View> : View{
-    public typealias Body = T
-    var content : T
+public struct Patch<Content:View> : View{
+    var content : () -> Content
     var size: PatchSize
     fileprivate var position : BlockPosition = BlockPosition( x: -1, y: -1)
-    public init(size: PatchSize = PatchSize(), @ViewBuilder content: @escaping () -> T ){
-        self.content = content()
+    public init(size: PatchSize = PatchSize(), @ViewBuilder content: @escaping () -> Content ){
+        self.content = content
         self.size = size
     }
     
-    public var body: T {
-        return content
+    public var body: Content {
+        content()
     }
 }
 
